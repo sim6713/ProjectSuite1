@@ -1,24 +1,25 @@
 ﻿
-
 // The main test function
 function Main()
 {
   let process = RunApplication();
-  MaximizeApp(process);
+  let WinMain = MaximizeApp(process);
+  OpenFormEdit(WinMain);
   
+  Delay(3000);
   CloseApp(process);
 }
 
-// Run the tested application
+// Запустить приложение
 function RunApplication()
 {
   return TestedApps.TestTD32.Run();
 }
 
-
-function MaximizeApp(process)
+// азвернуть приложение на весь экран
+function MaximizeApp(p)
 {
-  w = process.WaitWindow("TFMain", "FMain", -1, 5000);
+  w = p.WaitWindow("TFMain", "FMain", -1, 5000);
   
   if (w.Exists)
     {
@@ -29,22 +30,25 @@ function MaximizeApp(process)
       Log.Warning("Incorrect window - MaximizeApp");
       
   w.Maximize();
+  return w;
 }
 
-function CloseApp(process)
+//Выбрать раздел "Форма редакторов"
+function OpenFormEdit(w)
 {
-    let p = process;
-    // Waits for the window for 5 seconds
-    w = p.WaitWindow("TFMain", "FMain", -1, 5000);
-    
-    if (w.Exists)
+  if (w.Exists)
     {
       w.Activate();
-      Log.Picture(w, "CloseApp");
+      w.Click(60, 40);
+      Log.Picture(w, "OpenFormEdit");
     }
     else
-      Log.Warning("Incorrect window - CloseApp");
-  
+      Log.Warning("Incorrect window - OpenFormEdit");   
+}
+
+
+function CloseApp(p)
+{  
   // Close the application
-  w.Close(0);
+  p.Close(0);
 }
