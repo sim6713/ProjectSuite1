@@ -14,15 +14,18 @@ function Main()
   let process = RunApplication();
   let WinMain = MaximizeApp(process);
   OpenFormEdit(WinMain);
+  
   /*
   FuncMemoEdit();
   FuncTextEdit();
   FuncCheckBox();
   FuncCurrencyEdit();
   FuncCheckComboBox();
-  */
   FuncSpinEdit();
-
+  */
+  
+  FuncDateEdit();
+  
   CloseApp(process);
 }
 
@@ -150,6 +153,22 @@ function FuncSpinEdit()
   ObjectClickButton(ButtonsPanel.TcxButton6, "SpinEditClickButton");
   aqObject.CheckProperty(LabelsPanel.TcxLabel6, "WndCaption", cmpEqual, result, false);
   
+}
+/////////////////////////////////////////////////////////////////
+//Выбрать произвольное значение в поле 'DateEdit'<br>
+//Нажать на кнопку "Значение"<br>
+//Проверить появление значения справа от кнопки<br>
+function FuncDateEdit()
+{
+  let tcxDateEdit = MainPanel.deTest.deTestEdit;
+  tcxDateEdit.TcxCustomDropDownInnerEdit.Click(240, 1);
+  tcxDateEdit.Click(276, 10);
+  
+  let calendar = Aliases.TestTD32.TcxDateEditPopupWindow_.TcxPopupCalendar;
+  calendar.Keys("[Enter]");
+  
+  ObjectClickButton(ButtonsPanel.TcxButton7, "DateEditClickButton");
+  aqObject.CheckProperty(LabelsPanel.TcxLabel7, "WndCaption", cmpEqual, aqDateTime.Today(), false);
 }
 
 //Ввести тeкст
