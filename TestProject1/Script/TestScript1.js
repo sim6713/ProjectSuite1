@@ -14,55 +14,19 @@ function Main()
   let process = RunApplication();
   let WinMain = MaximizeApp(process);
   OpenFormEdit(WinMain);
-  
-  /*
+ 
   FuncMemoEdit();
   FuncTextEdit();
   FuncCheckBox();
   FuncCurrencyEdit();
   FuncCheckComboBox();
   FuncSpinEdit();
-  */
-  
   FuncDateEdit();
-  
+  FuncProgressEdit();
+  FuncLookUpEdit();
+
+  FMain.Close();
   CloseApp(process);
-}
-
-// Запустить приложение
-function RunApplication()
-{
-  return TestedApps.TestTD32.Run();
-}
-
-// азвернуть приложение на весь экран
-function MaximizeApp(p)
-{
-  w = p.WaitWindow("TFMain", "FMain", -1, 5000);
-  
-  if (w.Exists)
-    {
-      w.Activate();
-      Log.Picture(w, "MaximizeApp");
-    }
-    else
-      Log.Warning("Incorrect window - MaximizeApp");
-      
-  w.Maximize();
-  return w;
-}
-
-//Выбрать раздел "Форма редакторов"
-function OpenFormEdit(w)
-{
-  if (w.Exists)
-    {
-      w.Activate();
-      w.Click(60, 40);
-      Log.Picture(w, "OpenFormEdit");
-    }
-    else
-      Log.Warning("Incorrect window - OpenFormEdit");   
 }
 ///////////////////////////////////////////////////////////////////////////////
 //Перейти в первое поле 'Memo'
@@ -151,8 +115,7 @@ function FuncSpinEdit()
   }
   
   ObjectClickButton(ButtonsPanel.TcxButton6, "SpinEditClickButton");
-  aqObject.CheckProperty(LabelsPanel.TcxLabel6, "WndCaption", cmpEqual, result, false);
-  
+  aqObject.CheckProperty(LabelsPanel.TcxLabel6, "WndCaption", cmpEqual, result, false); 
 }
 /////////////////////////////////////////////////////////////////
 //Выбрать произвольное значение в поле 'DateEdit'<br>
@@ -170,7 +133,88 @@ function FuncDateEdit()
   ObjectClickButton(ButtonsPanel.TcxButton7, "DateEditClickButton");
   aqObject.CheckProperty(LabelsPanel.TcxLabel7, "WndCaption", cmpEqual, aqDateTime.Today(), false);
 }
+/////////////////////////////////////////////////////////////////
+//Выбрать произвольное значение в поле 'ProgressEdit'<br>
+//Увеличить или уменьшить значение в поле 'ProgressEdit' с помощью кнопок + -<br>
+//Нажать на кнопку "Значение"<br>
+//Проверить появление значения справа от кнопки<br>
+function FuncProgressEdit()
+{
+  let value = 12;
+  
+  let tsmGbProgressEdit = MainPanel.peTest;
+  tsmGbProgressEdit.peTestProgress.Click(29, 9); // 12
+  Log.Picture(tsmGbProgressEdit.peTestProgress, "FuncProgressEditCheckValue");
+  
+  tsmGbProgressEdit.peTestUp.Click(); // 12 + 1 = 13;
+  value = value + 1;
+  tsmGbProgressEdit.peTestDown.Click(); // 13- 1 = 12
+  value = value - 1;
+  tsmGbProgressEdit.peTestDown.Click(); // 12- 1 = 11
+  value = value - 1;
+  
+  ObjectClickButton(ButtonsPanel.TcxButton8, "ProgressEditClickButton");
+  aqObject.CheckProperty(LabelsPanel.TcxLabel8, "WndCaption", cmpEqual, value, false);
 
+}
+/////////////////////////////////////////////////////////////////
+//Развернуть список и выбрать произвольное значение в поле 'LookUpEdit'<br>
+//Удалить значение кнопкой "крестик"<br>
+//Развернуть список и выбрать произвольное значение в поле 'LookUpEdit'<br>
+//Нажать на кнопку "Значение"<br>
+//Проверить появление значения справа от кнопки<br>
+function FuncLookUpEdit()
+{
+  let tsmLookUpComboBox = MainPanel.lueTest.lueTestEdit;
+  tsmLookUpComboBox.Click(262, 7);
+  let tcxCustomComboBoxInnerEdit = tsmLookUpComboBox.TcxCustomComboBoxInnerEdit;
+  tcxCustomComboBoxInnerEdit.Keys("[Down][Enter]");
+  tsmLookUpComboBox.Click(280, 7);
+  tsmLookUpComboBox.Click(266, 6);
+  tcxCustomComboBoxInnerEdit.Keys("[Down][Enter]");
+  
+  ObjectClickButton(ButtonsPanel.TcxButton9, "LookUpEditClickButton");
+  aqObject.CheckProperty(LabelsPanel.TcxLabel9, "WndCaption", cmpContains, "1", false);
+  
+}
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+// Запустить приложение
+function RunApplication()
+{
+  return TestedApps.TestTD32.Run();
+}
+
+// азвернуть приложение на весь экран
+function MaximizeApp(p)
+{
+  w = p.WaitWindow("TFMain", "FMain", -1, 5000);
+  
+  if (w.Exists)
+    {
+      w.Activate();
+      Log.Picture(w, "MaximizeApp");
+    }
+    else
+      Log.Warning("Incorrect window - MaximizeApp");
+      
+  w.Maximize();
+  return w;
+}
+
+//Выбрать раздел "Форма редакторов"
+function OpenFormEdit(w)
+{
+  if (w.Exists)
+    {
+      w.Activate();
+      w.Click(60, 40);
+      Log.Picture(w, "OpenFormEdit");
+    }
+    else
+      Log.Warning("Incorrect window - OpenFormEdit");   
+}
 //Ввести тeкст
 function ObjectInputText(wnd, message, text)
 {
