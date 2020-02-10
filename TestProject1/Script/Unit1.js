@@ -14,12 +14,13 @@ function Main()
   let process = RunApplication();
   let WinMain = MaximizeApp(process);
   OpenFormEdit(WinMain);
-  
+  /*
   FuncMemoEdit();
   FuncTextEdit();
   FuncCheckBox();
   FuncCurrencyEdit();
   FuncCheckComboBox();
+  */
   FuncSpinEdit();
 
   CloseApp(process);
@@ -128,6 +129,26 @@ function FuncCheckComboBox()
 //Проверить появление значения справа от кнопки
 function FuncSpinEdit()
 {
+  let value1 = 8;
+  let value2 = 3;
+  
+  var result = value1 - value2;
+
+  let tcxSpinEdit = MainPanel.seTest.seTestEdit;
+  tcxCustomInnerTextEdit = tcxSpinEdit.TcxCustomInnerTextEdit_;
+ 
+  tcxSpinEdit.Keys("^A");
+  tcxSpinEdit.Keys("[BS]");
+  
+  ObjectInputText(tcxCustomInnerTextEdit, "FuncSpinEditInputValue", value1);
+
+  for(i = 0; i < value2; i++)
+  {
+    tcxSpinEdit.Keys("[Down]");
+  }
+  
+  ObjectClickButton(ButtonsPanel.TcxButton6, "SpinEditClickButton");
+  aqObject.CheckProperty(LabelsPanel.TcxLabel6, "WndCaption", cmpEqual, result, false);
   
 }
 

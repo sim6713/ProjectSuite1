@@ -255,6 +255,43 @@
 																			</Child>
 																		</Children>
 																	</Child>
+																	<Child Name="seTest" Key="{411A8DD2-749A-4A1B-A930-16506455A049}" ParallelWalk="True">
+																		<Image FileName="2013128354" Left="23" Top="621" Right="314" Bottom="657" />
+																		<TypeInfo Item0="{27A06A6A-0411-4899-85FE-E522009A88FB}" />
+																		<Properties>
+																			<Property Name="ClassName">
+																				<Value PropertyType="0" Value="TsmGbSpinEdit" Type="5" />
+																			</Property>
+																			<Property Name="ObjectIdentifier">
+																				<Value PropertyType="0" Value="seTest" Type="5" />
+																			</Property>
+																		</Properties>
+																		<Children>
+																			<Child Name="seTestEdit" Key="{89903A74-BA7D-4228-8E26-EF6CF59C5930}" ParallelWalk="True">
+																				<Image FileName="2013128354" Left="23" Top="636" Right="314" Bottom="657" />
+																				<TypeInfo Item0="{E0AE6839-4042-4CA3-A13F-3781892CD5F0}" />
+																				<Properties>
+																					<Property Name="ClassName">
+																						<Value PropertyType="0" Value="TcxSpinEdit" Type="5" />
+																					</Property>
+																					<Property Name="ObjectIdentifier">
+																						<Value PropertyType="0" Value="seTestEdit" Type="5" />
+																					</Property>
+																				</Properties>
+																				<Children>
+																					<Child Name="TcxCustomInnerTextEdit_" Key="{BF840C54-F7D5-4505-B418-A380258B1883}" ParallelWalk="True">
+																						<Image FileName="2013128354" Left="26" Top="639" Right="295" Bottom="652" />
+																						<TypeInfo Item0="{C7A42516-8AFE-4C4E-9E4E-F99146767998}" />
+																						<Properties>
+																							<Property Name="WndClass">
+																								<Value PropertyType="0" Value="TcxCustomInnerTextEdit" Type="5" />
+																							</Property>
+																						</Properties>
+																					</Child>
+																				</Children>
+																			</Child>
+																		</Children>
+																	</Child>
 																</Children>
 															</Child>
 															<Child Name="pButtonsPanel" Key="{07734A07-EABC-4E12-BA9B-F522F492ED79}" ParallelWalk="True">
@@ -344,6 +381,21 @@
 																			</Property>
 																		</Properties>
 																	</Child>
+																	<Child Name="TcxButton6" Key="{8F0E6D6E-3B79-45D6-8EA6-CE8669B72E7B}" ParallelWalk="True">
+																		<Image FileName="2013128354" Left="338" Top="631" Right="413" Bottom="655" />
+																		<TypeInfo Item0="{9428ECB7-A5CD-4542-9761-0C46616C96D5}" />
+																		<Properties>
+																			<Property Name="WndClass">
+																				<Value PropertyType="0" Value="TcxButton" Type="5" />
+																			</Property>
+																			<Property Name="WndCaption">
+																				<Value PropertyType="0" Value="Значение -&gt;" Type="5" />
+																			</Property>
+																			<Property Name="Index">
+																				<Value PropertyType="0" Value="2" Type="0" />
+																			</Property>
+																		</Properties>
+																	</Child>
 																</Children>
 															</Child>
 															<Child Name="pLabelsPanel" Key="{B88C01B3-97C3-470D-89BB-BD48495103ED}" ParallelWalk="True">
@@ -415,6 +467,18 @@
 																			</Property>
 																			<Property Name="WndCaption">
 																				<Value PropertyType="0" Value="1" Type="5" />
+																			</Property>
+																		</Properties>
+																	</Child>
+																	<Child Name="TcxLabel6" Key="{5FEBB6E0-7B0C-470B-BDB4-B19DB0753B19}" ParallelWalk="True">
+																		<Image FileName="2013128354" Left="434" Top="622" Right="884" Bottom="658" />
+																		<TypeInfo Item0="{355CDCA9-76EE-4ED0-97EC-C0447E08F66D}" />
+																		<Properties>
+																			<Property Name="WndClass">
+																				<Value PropertyType="0" Value="TcxLabel" Type="5" />
+																			</Property>
+																			<Property Name="WndCaption">
+																				<Value PropertyType="0" Value="5" Type="5" />
 																			</Property>
 																		</Properties>
 																	</Child>
@@ -495,6 +559,11 @@
 										<Child Name="TcxCustomComboBoxInnerEdit" Owner="{79515215-99E3-4AF9-95B6-032F65AD0698}" />
 									</Child>
 								</Child>
+								<Child Name="seTest" Owner="{411A8DD2-749A-4A1B-A930-16506455A049}">
+									<Child Name="seTestEdit" Owner="{89903A74-BA7D-4228-8E26-EF6CF59C5930}">
+										<Child Name="TcxCustomInnerTextEdit_" Owner="{BF840C54-F7D5-4505-B418-A380258B1883}" />
+									</Child>
+								</Child>
 							</Child>
 							<Child Name="pButtonsPanel" Owner="{07734A07-EABC-4E12-BA9B-F522F492ED79}">
 								<Child Name="TcxButton" Owner="{19C94A0E-4D23-4677-93E6-D81058D6B921}" />
@@ -502,6 +571,7 @@
 								<Child Name="TcxButton3" Owner="{98F52942-8426-49DA-B9E6-6757D89FBD87}" />
 								<Child Name="TcxButton4" Owner="{913A1BF3-8B7F-4D26-9CA2-5787D6283E89}" />
 								<Child Name="TcxButton5" Owner="{C2AA9035-4356-4AF9-B34B-850384B7ACA2}" />
+								<Child Name="TcxButton6" Owner="{8F0E6D6E-3B79-45D6-8EA6-CE8669B72E7B}" />
 							</Child>
 							<Child Name="pLabelsPanel" Owner="{B88C01B3-97C3-470D-89BB-BD48495103ED}">
 								<Child Name="TcxLabel" Owner="{B67AA477-51C2-41DF-B846-30FC384C2ADA}" />
@@ -509,6 +579,7 @@
 								<Child Name="TcxLabel3" Owner="{55292526-7779-4A72-A16D-AE2214D83E3D}" />
 								<Child Name="TcxLabel4" Owner="{D9EB8E56-FE2D-4FC8-84BD-2A52D062E17C}" />
 								<Child Name="TcxLabel5" Owner="{7A5B477B-B68B-400D-AAED-B64C9281930B}" />
+								<Child Name="TcxLabel6" Owner="{5FEBB6E0-7B0C-470B-BDB4-B19DB0753B19}" />
 							</Child>
 						</Child>
 					</Child>
